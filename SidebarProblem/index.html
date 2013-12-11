@@ -1,0 +1,527 @@
+
+<html>
+    <head>
+        <style type="text/css">
+            #sidebar {
+            margin-top:100px;
+            float:left;
+            width:100px;
+            }
+            #wrapper {
+            width:400px;
+            overflow:hidden;
+            padding:10px;
+            }
+
+
+            .fixedleftbar {
+            position: fixed;
+            left: 0;
+            width: 100%; height: 5rem;
+            background-color:rgba(27,31,32,0.75);
+            border-top:0.25rem solid #8B2743;
+            }
+            .fixedbar {
+            position: fixed;
+            top: 0;
+            width: 100%; height: 5rem;
+            background-color:rgba(27,31,32,0.75);
+            border-top:0.25rem solid #8B2743;
+            }
+            .logo {
+            float:left;
+            display:block;
+            width:83.5px; height:inherit;
+
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+
+
+            }
+            .navleftcontainer {
+            position:absolute; left:0; top:50%;
+            width:100%; height:100%;
+            // margin-left:-55rem;
+            //background-color:green;
+            }
+            .navcontainer {
+            position:absolute; top:0; left:50%;
+            width:100%; height:100%;
+            margin-left:-55rem;
+            //background-color:green;
+            }
+            .fixednav li {
+            position:relative;
+            float:left;
+            display:block;
+            padding:1rem 2.5rem;
+            list-style-type:none;
+            text-align:center;
+            }
+            .fixednav li:hover ul {
+            //display:block;
+            //float:left;
+            }
+            .fixednav li:hover{
+            //border-bottom:3px solid #fff;
+            }
+            .fixednav li a {
+            font:900 1.15rem 'Karla';
+            color: rgba(153, 153, 153,1);
+            color:rgb(220,220,220);
+            text-decoration: none;
+            -webkit-transition: all 0.2s linear;
+            -moz-transition: all 0.2s linear;
+            transition: all 0.2s linear;
+            }
+            .fixednav li:hover a{
+            color: #fff;
+            }
+            /* ################ Submenu ################*/
+            .fixednav li ul {
+            display:none;
+            position:relative;
+            height:auto;
+            margin:0;
+            padding:0;
+            list-style-type:none;
+            background: #5f6975;
+            //white-space: nowrap;
+            }
+            .fixednav li ul li a {
+            float:left;
+            color: #fff;
+            font-size:0.7rem;
+            }
+            .fixednav ul ul li a:hover {
+            background: #4b545f;
+            }
+            /* ################ Main Content ################*/
+            .main {
+            width:80rem; min-height:50rem;
+            margin:6rem auto 0 auto;
+            background-color:transparent;
+            }
+            .content {
+            display:none;
+            float:left;
+            margin-bottom:5rem;
+            border-bottom:2px solid black;
+            }
+            /* ################ HOME ################*/
+            .newscontainer {
+            float:left;
+            width:75rem;
+            margin-left:2rem;
+
+            }
+            .newsHeader {
+            float:left;
+            width:100%; height: 7rem;
+            margin-bottom:2.5rem;
+            font:800 2rem/7rem 'Karla';
+            color:#8B2743;
+            text-indent:2rem;
+            text-shadow: 0px 2px 3px #555;
+            text-transform:uppercase;
+
+            //background-color:transparent;
+            }
+            .newsSec {
+            clear:both;
+            width:100%; min-height:6rem;
+            margin:2 auto 0 auto;
+            padding-bottom:3rem;
+            border-bottom:1.5px solid #CAD3D3;
+            }
+            .newsTitle {
+            float:left; clear:both;
+            margin-left:4rem;
+            font:bold 1.3rem inherit;
+            color:#262221;
+            }
+            .newsShort {
+            float:left; clear:both;
+            margin-top:0.5rem; margin-left:4rem;
+            color:black;
+            }
+            .newsFull {
+            display:none;
+            float:left; clear:both;
+            margin-top:0.5rem; margin-left:4rem;
+            color:black;
+            }
+            .newsDate {
+            float:left; clear:both;
+            margin-top:0.25rem; margin-left:4rem;
+            font:italic bold 0.8rem 'Karla';
+            color:#8B2743;
+            }
+            /* ################ BENEFITS ################*/
+            .step {
+            display:none;
+            float:left;
+            width:75rem;
+
+            background-color:#D4D4CA;
+            }
+            .stepHeader {
+            box-sizing:border-box;
+            width:50%; height:7rem;
+            float:left;
+            padding-left:4rem; padding-top:2rem;
+            line-height:7rem;
+            font:800 2.1rem 'Karla';
+            color:#8B2743;
+            text-shadow: 0px 2px 3px #555;
+            text-transform:uppercase;
+            }
+            .stepDescript {
+            float:left; clear:both;
+            width:100%;
+            margin-bottom:1.5rem;
+            //padding-left:4rem;
+            //text-align:center;
+            font-size:1rem;
+            }
+            .stepDescriptField {
+            display: inline-block;
+            margin:0 6rem 2rem 6rem;
+            padding:1rem;
+            font:bold 1rem 'PT Sans', arial, serif;
+            color:#ffffff;
+            text-align:center;
+            border:.2rem solid rgba(0,0,0,0.5);
+            border-bottom:.6rem solid rgba(0,0,0,0.5);
+            -webkit-border-radius:.6rem;
+            -moz-border-radius:.6rem;
+            border-radius:.6rem;
+            background: rgba(0,0,0,0.25);
+            -o-box-shadow:
+            0 2px 8px rgba(0,0,0,0.5),
+            inset 0 1px rgba(255,255,255,0.3),
+            inset 0 10px rgba(255,255,255,0.2),
+            inset 0 10px 20px rgba(255,255,255,0.25),
+            inset 0 -15px 30px rgba(0,0,0,0.3);
+            -webkit-box-shadow:
+            0 2px 8px rgba(0,0,0,0.5),
+            inset 0 1px rgba(255,255,255,0.3),
+            inset 0 10px rgba(255,255,255,0.2),
+            inset 0 10px 20px rgba(255,255,255,0.25),
+            inset 0 -15px 30px rgba(0,0,0,0.3);
+            -moz-box-shadow:
+            0 2px 8px rgba(0,0,0,0.5),
+            inset 0 1px rgba(255,255,255,0.3),
+            inset 0 10px rgba(255,255,255,0.2),
+            inset 0 10px 20px rgba(255,255,255,0.25),
+            inset 0 -15px 30px rgba(0,0,0,0.3);
+            box-shadow:
+            0 2px 8px rgba(0,0,0,0.5), /* Exterior Shadow */
+            inset 0 1px rgba(255,255,255,0.3), /* Top light Line */
+            inset 0 10px rgba(255,255,255,0.2), /* Top Light Shadow */
+            inset 0 10px 20px rgba(255,255,255,0.25), /* Sides Light Shadow */
+            inset 0 -15px 30px rgba(0,0,0,0.3); /* Dark Background */
+            text-decoration: none;
+            }
+            .stepDescriptField2 {
+            display:inline-block;
+
+            border:1rem double pink; border-radius:3rem;
+            background-color: rgb(68,68,68); /* Needed for IEs */
+
+            -moz-box-shadow: 5px 5px 5px rgba(68,68,68,0.6);
+            -webkit-box-shadow: 5px 5px 5px rgba(68,68,68,0.6);
+            box-shadow: 5px 5px 5px rgba(68,68,68,0.6);
+
+            filter:
+            progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=0.30);
+            -ms-filter:
+            "progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=0.30)";
+            zoom: 1;
+            }
+            .stepDescriptLink {
+            display:inline-block;
+            margin-left:6rem;
+            padding:1rem;
+            border:1rem double pink; border-radius:3rem;
+            background-color: rgba(68,68,68,0.3); /* Needed for IEs */
+
+            -moz-box-shadow: 5px 5px 5px rgba(68,68,68,0.3);
+            -webkit-box-shadow: 5px 5px 5px rgba(68,68,68,0.3);
+            box-shadow: 5px 5px 5px rgba(68,68,68,0.3);
+
+            filter:
+            progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=0.30);
+            -ms-filter:
+            "progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=0.30)";
+            zoom: 1;
+            }
+            .benAccept {
+            float:left; clear:both;
+            margin-bottom:1.5rem;
+            padding-left:4rem;
+            font-weight:bold;
+            }
+            .benAccept a{
+            color:white;
+            }
+            .benAccept a:hover{
+            color:yellow;
+            }
+            .benAccept > .benTable {
+            background-color:#8B2743;
+            }
+            .benDecline > .benTable {
+            background-color:#A97D60;
+            }
+            .benDecline {
+            float:left; clear:both;
+            margin-bottom:1.5rem;
+            padding-left:4rem;
+            font-weight:bold;
+            }
+            .benTable {
+            float:left;
+            margin-top:0.25rem;
+            border:2.5px outset #262221;
+            font-weight:normal;
+            text-align:center;
+            }
+            .benTr {
+            display:inline;
+            float:left; clear:both;
+            }
+            .benTd {
+            //display:table-column;
+            display:inline-block;
+            float:left;
+            width:10rem; height:2rem;
+            color:white;
+            text-align:center;
+
+            }
+            /* ################ DEPENDENTS ################*/
+            .newt1{
+            display:inline-block; box-sizing:border-box;
+            float:left;
+            width:35rem; height:13rem;
+            margin-top:1rem;
+            padding-bottom:0.75rem;
+            border:.2rem outset #262221; border-radius:1rem;
+            color:white;
+            background-color:#002273;
+            box-shadow: 3px 3px 10px 5px #000, 0 0 4px rgba(0, 0, 0, .5) inset;
+            }
+            .newt3{
+            float:left;
+            width:35rem; height:3rem;
+            }
+            .newt4 {
+            display:inline-block;
+            float:left;
+            margin-top:0.75rem; margin-left:1rem;
+            text-align:center;
+            }
+            .newton1{
+            display:inline-block; box-sizing: border-box;
+            //float:right;
+            width:29rem; height:4rem;
+            margin-top:0.25rem;
+            padding-bottom:0.75rem;
+            border:2.5px outset #262221; border-radius:7px;
+            color:black;
+            background-color:yellow;
+            }
+            .newt1 a{
+            color:white;
+            }
+            .newt1 a:hover{
+            color:yellow;
+            }
+            .newton1hdr{
+            display:inline-block;
+            // float:right;
+            color:black;
+            width:60%; height:3rem;
+            }
+            .newton3{
+            float:left;
+            width:28rem; height:3rem;
+            }
+            .newton4 {
+            display:inline-block;
+            float:left;
+            margin-top:0.75rem; margin-left:0.5rem;
+            text-align:left;
+            }
+            dependentSection-left{
+            display:inline-block;
+            float:left;
+            width:35rem;;
+            border:.2rem solid blue;
+            background-color:magenta;
+            }
+            dependentSection-right{
+            display:inline-block; align:top;
+            float:right; clear:both;
+            vertical-align:top;
+            width:28rem;
+            margin-left:1rem;
+            border:.2rem solid brown;
+            background-color:teal;
+            }
+            .depend {
+            align:top; vertical-align:top;
+            float:left; clear:both;
+            width:65rem;
+            margin-bottom:1.5rem;
+            padding-left:4rem;
+            font-weight:bold;
+            }
+            .depTable {
+            float:left;
+            margin-top:0.25rem;
+            border:.2rem outset #262221;
+            font-weight:normal;
+            text-align:center;
+            }
+            .depTr {
+            display:table-row;
+            clear:both;
+            }
+            .depTd {
+            display:inline-block;
+            float:left;
+            width:10rem; height:2rem;
+            color:white;
+            text-align:center;
+            }
+            .contact {
+            float:left;
+            width:75rem;
+
+            background-color:#D4D4CA;
+            }
+            .stepBeginBody{
+            float:left; clear:both;
+            width:100%; height:25rem;
+            margin-left:2rem;
+            padding-left:2rem;
+            text-align:center;
+            }
+            .testingNotes{
+            float:left; clear:both;
+            margin:0.5rem 3rem;
+            padding:1rem;
+            border:.4rem solid red; border-radius:.5rem;
+            color:red;
+            }
+            .checkbox{
+            width:1.2rem; height:1.2rem;
+            margin-left:1rem;
+            vertical-align:middle;
+            display:none;
+            }
+
+
+        </style>
+    </head>
+
+    <body>
+        <div id="wrapper">
+            <div id="sidebar">
+                Sidebar
+                <ul>
+                    <li>
+                        <a href="#" data-region="nav-1">1</a>
+                    </li>
+                    <li>
+                        <a href="#" data-region="nav-1">2</a>
+                    </li>
+                    <li>
+                        <a href="#" data-region="nav-1">3</a>
+                    </li>
+                    <li>
+                        <a href="#" data-region="nav-1">4</a>
+                    </li>
+                    <li>
+                        <a href="#" data-region="nav-1">5</a>
+                    </li>
+                    <li>
+                        <a href="#" data-region="nav-1">6</a>
+                    </li>
+                    <li>
+                        <a href="#" data-region="nav-1">7</a>
+                    </li>
+                    <li>
+                        <a href="#" data-region="nav-1">8</a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="fixedbar">
+                <div class="navcontainer">
+                    <div class="logo"></div>
+
+                    <nav class="fixednav">
+                        <ul>
+                            <li>
+                                <a href="#" data-region="nav-1">Home</a>
+                            </li>
+                            <li>
+                                <a href="#" data-region="nav-2">Paystubs</a>
+                            </li>
+                            <li>
+                                <a href="#" data-region="nav-3">W-2s</a>
+                            </li>
+                            <li>
+                                <a href="#" data-region="nav-4">Timekeeping</a>
+                            </li>
+                            <li>
+                                <a href="#" data-region="nav-5">Benefits</a>
+                            </li>
+                            <li>
+                                <a href="#" data-region="nav-6">Company Documents</a>
+                            </li>
+                            <li>
+                                <a href="#" data-region="nav-7">Contact</a>
+                            </li>
+                            <li>
+                                <a href="#" data-region="nav-8">Link</a>
+                            </li>
+                        </ul>
+                    </nav>
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div class="sidebar">
+            <div class="content">
+                Hi there
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                </ul>
+            </div>
+        </div>
+
+    </body>
+
+</html>
+
